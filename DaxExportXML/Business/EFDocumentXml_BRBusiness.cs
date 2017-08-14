@@ -19,10 +19,11 @@ namespace DaxExportXML.Business
             //se o diretório existir
             if (Directory.Exists(path))
             {
-                //se a subpasta for selecionada
+                //cria sub-pastas?
                 if (subPasta)
                     Directory.CreateDirectory(path += $"\\{xml.DATAAREAID.ToUpper()}\\{xml.EFDocument_BR.FiscalDocument_BR.FISCALDOCUMENTDATE.Year.ToString("0000")}\\{xml.EFDocument_BR.FiscalDocument_BR.FISCALDOCUMENTDATE.Month.ToString("00")}\\{xml.EFDocument_BR.FiscalDocument_BR.FISCALDOCUMENTDATE.Day.ToString("00")}");
 
+                // se existir xml de envio
                 if (xml.SUBMISSION != null) {
                     //determinar o padrão do arquivo a ser exportado
                     var aprovada = $"{path}\\{xml.EFDocument_BR.FiscalDocument_BR.FISCALDOCUMENTDATE.ToString("yyyy-MM-dd")}_{xml.DATAAREAID}_{xml.EFDocument_BR.FiscalDocument_BR.ACCESSKEY}.xml";
@@ -41,7 +42,7 @@ namespace DaxExportXML.Business
                     }
                 }
 
-                //se a nota for cancelada no sitema
+                //se existir xml de cancelamento
                 if (xml.CANCEL != null)
                 {
                     //determinar o padrão do arquivo a ser exportado CANCEL

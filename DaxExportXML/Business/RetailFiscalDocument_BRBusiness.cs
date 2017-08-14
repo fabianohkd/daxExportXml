@@ -8,9 +8,15 @@ using System.Xml.Linq;
 
 namespace DaxExportXML.Business
 {
+
     public class RetailFiscalDocument_BRBusiness
     {
-
+        /// <summary>
+        /// Exporta o xml correspondente ao registro na pasta informada
+        /// </summary>
+        /// <param name="path">caminho para exportar o arquivo</param>
+        /// <param name="xml">objeto <see cref="Model.RetailFiscalDocument_BR"/></param>
+        /// <param name="subPasta">cria subpastas com as datas</param>
         public void gerarXmlNaPasta(String path, Model.RetailFiscalDocument_BR xml, bool subPasta)
         {
             //se o diretório existir
