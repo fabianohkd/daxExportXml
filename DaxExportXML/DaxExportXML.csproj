@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="Business\EFDocumentXml_BRBusiness.cs" />
     <Compile Include="Business\RetailFiscalDocument_BRBusiness.cs" />
+    <Compile Include="Model\CompanyEnum.cs" />
+    <Compile Include="Model\SalesCupomCluster.cs" />
     <Compile Include="View\FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>

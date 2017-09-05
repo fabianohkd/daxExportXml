@@ -11,21 +11,24 @@ using DaxExportXML.Model;
 namespace DaxExportXML.Repository
 {
     /// <summary>
-    /// 
+    /// Classe responsável por centralizar o acesso a dados do tipo <see cref="RetailFiscalDocument_BR"/>
     /// </summary>
     public class RetailFiscalDocument_BRRepository
     {
+        #region Fields
         /// <summary>
         /// Conexão com o banco-de-dados
         /// </summary>
-        public string ConnectionString = ConfigurationManager.ConnectionStrings["RetailVRD"].ToString();
+        private string ConnectionString = ConfigurationManager.ConnectionStrings["RetailVRD"].ToString();
+        #endregion
 
+        #region Methods
         /// <summary>
         /// Retorna uma lista de documentos da empresa selecionada
         /// </summary>
         /// <param name="company">codigo da empresa</param>
         /// <returns></returns>
-        public List<RetailFiscalDocument_BR> GetAllByCompany(string company)
+        internal List<RetailFiscalDocument_BR> GetByCompany(string company)
         {
             var list = new List<RetailFiscalDocument_BR>();
 
@@ -41,7 +44,7 @@ namespace DaxExportXML.Repository
         /// Obter todos os registros
         /// </summary>
         /// <returns>uma lista de documentos</returns>
-        public List<RetailFiscalDocument_BR> GetAll()
+        internal List<RetailFiscalDocument_BR> GetAll()
         {
             var list = new List<RetailFiscalDocument_BR>();
 
@@ -61,7 +64,7 @@ namespace DaxExportXML.Repository
         /// </summary>
         /// <param name="AccessKey">Chave de acesso</param>
         /// <returns></returns>
-        public RetailFiscalDocument_BR GetById(string AccessKey)
+        internal RetailFiscalDocument_BR GetById(string AccessKey)
         {
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
@@ -70,22 +73,17 @@ namespace DaxExportXML.Repository
         }
 
         /// <summary>
-        /// 
+        /// Obter registros em um periodo selecionado
         /// </summary>
-        /// <param name="inicio"></param>
-        /// <param name="fim"></param>
-        /// <param name="company"></param>
-        /// <returns></returns>
-        public List<RetailFiscalDocument_BR> GetByDate(DateTime inicio, DateTime fim, Company company)
+        /// <param name="inicio">data inicial</param>
+        /// <param name="fim">data final</param>
+        /// <param name="company">empresa</param>
+        /// <returns>lista de documentos do tipo <seealso cref="RetailFiscalDocument_BR"/> </returns>
+        internal List<RetailFiscalDocument_BR> GetByDate(DateTime inicio, DateTime fim, Company company)
         {
             return null;
         }
+        #endregion
     }
 
-    public enum Company
-    {
-        DRJ,
-        LOG,
-        RDC
-    }
 }

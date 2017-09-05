@@ -42,35 +42,16 @@ namespace DaxExportXML
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            ////zerar barra de progresso
-            //toolStripProgressBar.Value = 0;
-
-            //var dao = new RetailFiscalDocument_BRRepository();
-            //var result = dao.GetAllByCompany("drj");
-            //var proc = new RetailFiscalDocument_BRBusiness();
-
-            //foreach (var item in result)
-            //{
-            //    //ajusta a barra de progresso
-            //    toolStripProgressBar.Maximum = result.Count;
-            //    toolStripProgressBar.Increment(1);
-
-            //    await Task.Run(() => {
-            //        //gravando arquivo na pasta
-            //        proc.gerarXmlNaPasta(tbPath.Text, item, cbSubPasta.Checked);
-            //    });
-            //}
-
-            ////exibir msg para o usuario
-            //MessageBox.Show("Processo concluido, todas os XML foram exportados na pasta.");
-
-
             //zerar barra de progresso
             toolStripProgressBar.Value = 0;
 
-            var dao = new EFDocumentXml_BRRepository();
-            var result = dao.GetByDataAreaID("rdc", 2017, 7);
-            var proc = new EFDocumentXml_BRBusiness();
+            //obter o periodo selecionado do componente datePicker
+            var year = dateTimePicker1.Value.Year;
+            var month = dateTimePicker1.Value.Month;
+            var day = dateTimePicker1.Value.Day;
+
+            var proc = new RetailFiscalDocument_BRBusiness();
+            var result = proc.GetByCompany("drj");
 
             foreach (var item in result)
             {
@@ -86,6 +67,26 @@ namespace DaxExportXML
 
             //exibir msg para o usuario
             MessageBox.Show("Processo concluido, todas os XML foram exportados na pasta.");
+
+
+            //var dao = new EFDocumentXml_BRRepository();
+            //var proc = new EFDocumentXml_BRBusiness();
+            //var result = dao.GetByDataAreaID("rdc", year, month);
+
+            //foreach (var item in result)
+            //{
+            //    //ajusta a barra de progresso
+            //    toolStripProgressBar.Maximum = result.Count;
+            //    toolStripProgressBar.Increment(1);
+
+            //    await Task.Run(() => {
+            //        //gravando arquivo na pasta
+            //        proc.gerarXmlNaPasta(tbPath.Text, item, cbSubPasta.Checked);
+            //    });
+            //}
+
+            ////exibir msg para o usuario
+            //MessageBox.Show("Processo concluido, todas os XML foram exportados na pasta.");
 
         }
 
