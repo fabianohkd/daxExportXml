@@ -187,7 +187,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmPrincipal";
-            this.Text = "Exportar XML - Retail VRD";
+            this.Text = "Exportar XML";
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
