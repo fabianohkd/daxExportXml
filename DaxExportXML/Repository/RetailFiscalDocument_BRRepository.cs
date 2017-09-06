@@ -27,17 +27,32 @@ namespace DaxExportXML.Repository
         /// Retorna uma lista de documentos da empresa selecionada
         /// </summary>
         /// <param name="company">codigo da empresa</param>
+        /// <param name="year">ano do registro</param>
+        /// <param name="month">mês do registro</param>
         /// <returns></returns>
-        internal List<RetailFiscalDocument_BR> GetByCompany(string company)
+        internal List<RetailFiscalDocument_BR> GetByCompany(string company, int year, int month)
         {
-            var list = new List<RetailFiscalDocument_BR>();
+            //query
+            var query = @"select * from RetailFiscalDocument_BR 
+                          where DataAreaID = @Company 
+                                and year(FISCALDOCUMENTDATETIME) = @Year 
+                                and month(FISCALDOCUMENTDATETIME) = @Month ";
 
+            //conexão
             using (var sqlConnection = new SqlConnection(ConnectionString))
             {
-                list = sqlConnection.Query<RetailFiscalDocument_BR>("select * from RetailFiscalDocument_BR where DataAreaID = @Company ", new { Company = company }).ToList<RetailFiscalDocument_BR>();
+                var list = sqlConnection.Query<RetailFiscalDocument_BR>(
+                    query,
+                    new {
+                        Company = company,
+                        Year = year,
+                        Month = month
+                    }
+                    ).ToList<RetailFiscalDocument_BR>();
+
+                return list;
             }
 
-            return list;
         }
 
         /// <summary>

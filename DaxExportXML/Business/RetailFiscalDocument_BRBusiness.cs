@@ -55,9 +55,9 @@ namespace DaxExportXML.Business
         /// </summary>
         /// <param name="company">codigo da empresa</param>
         /// <returns>Lista de <seealso cref="RetailFiscalDocument_BR"/> </returns>
-        public List<RetailFiscalDocument_BR> GetByCompany(string company)
+        public List<RetailFiscalDocument_BR> GetByCompany(string company, int year, int month)
         {
-            return new RetailFiscalDocument_BRRepository().GetByCompany(company);
+            return new RetailFiscalDocument_BRRepository().GetByCompany(company, year, month);
         }
 
     }
